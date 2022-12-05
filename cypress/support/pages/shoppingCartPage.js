@@ -1,4 +1,4 @@
-export class OnlinePage {
+export class ShoppingCartPage {
     constructor() {
         this.blacksocks = "[name='Black Socks']";
         this.beigeshorts = "[name='Beige Shorts']"

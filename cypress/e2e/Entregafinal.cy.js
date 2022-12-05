@@ -3,7 +3,7 @@ import { RegisterPage } from "../support/pages/registerPage";
 import{LoginPage} from "../support/pages/loginPage";
 import { HomePage } from "../support/pages/homePage";
 import { ProductsPage } from "../support/pages/productsPage";
-import { OnlinePage } from "../support/pages/onlinePage";
+import { ShoppingCartPage } from "../support/pages/shoppingCartPage";
 
 
 
@@ -12,7 +12,7 @@ describe('Module Online Shope', () => {
     const loginPage = new LoginPage()
     const homePage = new HomePage()
     const productsPage = new ProductsPage()
-    const onlinePage = new OnlinePage()
+    const shoppingCartPage = new ShoppingCartPage()
     let logindata 
     let productos
     before('Before', () => {
@@ -38,9 +38,9 @@ describe('Module Online Shope', () => {
         productsPage.clickAddtocart(productos.producto1.name)
         productsPage.clickAddtocart(productos.producto2.name)
         productsPage.clickGoToShoppingCart()
-        onlinePage.clickShowTotalPrice()
-        onlinePage.VerificoProductos()
-        onlinePage.VerificoPrecios(productos.producto1.precio + productos.producto2.precio)
+        shoppingCartPage.clickShowTotalPrice()
+        shoppingCartPage.VerificoProductos()
+        shoppingCartPage.VerificoPrecios(productos.producto1.precio + productos.producto2.precio)
         
     });
     
