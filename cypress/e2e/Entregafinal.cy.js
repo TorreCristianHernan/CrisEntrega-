@@ -35,12 +35,18 @@ describe('Module Online Shope', () => {
         loginPage.escribirContraseña(logindata.contraseña)
         loginPage.clickLoginButton()
         homePage.clickOnlineShop()
-        productsPage.clickAddtocart(productos.producto1.name)
-        productsPage.clickAddtocart(productos.producto2.name)
+        productsPage.agregarProducto(productos.producto1.name)
+        productsPage.agregarProducto(productos.producto2.name)
         productsPage.clickGoToShoppingCart()
         shoppingCartPage.clickShowTotalPrice()
-        shoppingCartPage.VerificoProductos()
-        shoppingCartPage.VerificoPrecios(productos.producto1.precio + productos.producto2.precio)
+        shoppingCartPage.VerificoProductos(productos.producto1.name)
+        shoppingCartPage.VerificoProductos(productos.producto2.name)
+        shoppingCartPage.VerificoPrecios(productos.producto1.price)
+        shoppingCartPage.VerificoPrecios(productos.producto2.price)
+        shoppingCartPage.ValorSumaProductos(productos.producto1.price + productos.producto2.price)
+       
+
+        
         
     });
     

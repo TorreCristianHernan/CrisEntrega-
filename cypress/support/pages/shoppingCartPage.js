@@ -1,23 +1,31 @@
 export class ShoppingCartPage {
-    constructor() {
-        this.blacksocks = "[name='Black Socks']";
-        this.beigeshorts = "[name='Beige Shorts']"
-        this.priceblacksoks="[name='10']"
-        this.pricebeigeshorts="[name='19']"
+    constructor() { 
+        this.ShowTotalPrice = 'Show total price'
+        this.price= '#productPrice'
+        this.nombre= '#productName'
+
     };
 
     
 
     clickShowTotalPrice() {
-        cy.contains('Show total price').click()
+        cy.contains(this.ShowTotalPrice).click()
         
     };
-    VerificoProductos(){
-        cy.get(this.blacksocks).should('exist')
-        cy.get(this.beigeshorts).should('exist')
+    VerificoProductos(name){
+        cy.get(`[name='${name}']`).should('include.text',name)
+        
     }
-    VerificoPrecios(){
-    cy.get(this.blacksocks).siblings(this.priceblacksoks).should('exist')
-        cy.get(this.beigeshorts).siblings(this.pricebeigeshorts).should('exist')
+    VerificoPrecios(price){
+        cy.get(`[name='${price}']`).should('include.text',price)
+
+    } 
+    ValorSumaProductos(price){
+        cy.get("[id='price']").should('include.text',price)
     }
+
+
+    
+        
+    
 };
