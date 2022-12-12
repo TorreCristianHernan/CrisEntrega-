@@ -39,15 +39,14 @@ describe('Module Online Shope', () => {
         productsPage.agregarProducto(productos.producto2.name)
         productsPage.clickGoToShoppingCart()
         shoppingCartPage.clickShowTotalPrice()
-        shoppingCartPage.VerificoProductos(productos.producto1.name)
-        shoppingCartPage.VerificoProductos(productos.producto2.name)
-        shoppingCartPage.VerificoPrecios(productos.producto1.price)
-        shoppingCartPage.VerificoPrecios(productos.producto2.price)
-        shoppingCartPage.ValorSumaProductos(productos.producto1.price + productos.producto2.price)
+        shoppingCartPage.VerificoProductos(productos.producto1.name).should('include.text','Black Socks')
+        shoppingCartPage.VerificoProductos(productos.producto2.name).should('include.text','Beige Shorts')
+        shoppingCartPage.VerificoPrecios(productos.producto1.price).should('include.text','10')
+        shoppingCartPage.VerificoPrecios(productos.producto2.price).should('include.text', '19')
+        shoppingCartPage.ValorSumaProductos(productos.producto1.price + productos.producto2.price).should('include.text', '29')
        
-
         
-        
+    })    
     });
     
-});
+

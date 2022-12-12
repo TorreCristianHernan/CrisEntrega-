@@ -13,15 +13,15 @@ export class ShoppingCartPage {
         
     };
     VerificoProductos(name){
-        cy.get(`[name='${name}']`).should('include.text',name)
+     return   cy.get(`[name='${name}']`)
         
     }
     VerificoPrecios(price){
-        cy.get(`[name='${price}']`).should('include.text',price)
+     return   cy.get(`[name='${price}']`)
 
     } 
     ValorSumaProductos(price){
-        cy.get("[id='price']").should('include.text',price)
+      return  cy.get("[id='price']")
     }
 
 
