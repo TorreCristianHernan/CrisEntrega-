@@ -3,6 +3,7 @@ export class ShoppingCartPage {
         this.ShowTotalPrice = 'Show total price'
         this.price= '#productPrice'
         this.nombre= '#productName'
+        this.name='Go to Checkout'
 
     };
 
@@ -25,7 +26,9 @@ export class ShoppingCartPage {
     }
 
 
-    
+    clickGotoCheckout() {
+        cy.contains(this.name).click()
+    }
         
     
 };
