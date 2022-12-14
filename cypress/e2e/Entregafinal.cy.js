@@ -5,10 +5,13 @@ import { HomePage } from "../support/pages/homePage";
 import { ProductsPage } from "../support/pages/productsPage";
 import { ShoppingCartPage } from "../support/pages/shoppingCartPage";
 import {  CheckoutPage } from "../support/pages/checkoutPage";
+import{ RecibePage } from     "../support/pages/recibePage"
+
 
 
 
 describe('Module Online Shope', () => {
+    const recibepage = new RecibePage()  
     const registerPage = new RegisterPage() 
     const loginPage = new LoginPage()
     const homePage = new HomePage()
@@ -51,6 +54,11 @@ describe('Module Online Shope', () => {
        checkoutPage.escribirlastname(logindata.Lastname)
        checkoutPage.escribircardnumber(logindata.CardNumber)
        checkoutPage.clickPurchase()
+       checkoutPage.Esperar10segundos()
+       recibepage.Ver
+
+
+       
        
     })    
     });
