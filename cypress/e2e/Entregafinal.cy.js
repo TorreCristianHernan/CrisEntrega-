@@ -34,12 +34,48 @@ describe('Module Online Shope', () => {
        
         beforeEach
     });
-    it('', () => {  
-        cy.visit('')
-        registerPage.dobleClickRegister()
-        loginPage.escribirUsuario(logindata.usuario)
-        loginPage.escribirContraseña(logindata.contraseña)
-        loginPage.clickLoginButton()
+    it('', () => { 
+        const username ='usuariiiiiiiosssssssssss1'
+        const password= '123456!'
+        const gender='Male'
+        const day='5'
+        const month='October'
+        const year= '1988'
+
+        cy.request({
+            method: "POST",
+            url: "https://pushing-it.onrender.com/api/register",
+            body:{
+                username: username,
+                password: password,
+                gender:gender,
+                day: day,
+                month: month,
+                year: year
+            }
+        }).then( respuesta => {
+            expect(respuesta.status).is.equal(200)
+            expect(respuesta.body.newUser.username).is.equal(username)
+        
+        });
+            
+            cy.request({
+                method: "POST",
+                url:  "https://pushing-it.onrender.com/api/login",
+                body:{
+                    username: username,
+                    password: password,
+    
+                }
+     
+            }).then( respuesta => {
+                window.localStorage.setItem('token',respuesta.body.token)
+                window.localStorage.setItem('user',respuesta.body.user.username)
+
+            })
+        
+        
+            cy.visit('')
         homePage.clickOnlineShop()
         productsPage.agregarProducto(productos.producto1.name)
         productsPage.agregarProducto(productos.producto2.name)
@@ -61,8 +97,20 @@ describe('Module Online Shope', () => {
        recibepage.VerificoTarjeta().should('include.text','1234567891234567')
        recibepage.VerificoSuma().should('include.text','29')
        
-       
-    })    
-    });
+        }) 
+   
+    afterEach('elimino usuario',() => {
+         cy.request({
+                method:"DELETE",
+                url: `https://pushing-it.onrender.com/api/deleteuser/${username}`,
+            }).then(respuesta=>{
+                    cy.log(respuesta)
+               
+                
+            
+            })
+      
+    })
+    })
     
 
