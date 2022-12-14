@@ -1,18 +1,28 @@
 export class RecibePage {
     constructor() { 
-        this.ShowTotalPrice = 'Show total price'
-        this.price= '#productPrice'
+        
         this.nombre= 'Cristian Torre'
-        this.name='Go to Checkout'
-
+        this.name='#name'
+        this.tarjeta='#creditCard'
+        this.suma='#totalPrice'
     };
 
+VerificoNombre(){
+       return cy.contains(this.nombre)
     
 
         
-    
-    Verificorecibo(name){
-     return   cy.get(`[name='${name}']`)
-        
     }
-}s
+    VerificoProductos(producto){
+        return   cy.get(`[id='${producto}']`)
+           
+       }
+       VerificoTarjeta(){
+        return   cy.get(this.tarjeta)
+           
+       }
+       VerificoSuma(){
+        return   cy.get(this.suma)
+           
+       }
+}

@@ -10,6 +10,7 @@ import{ RecibePage } from     "../support/pages/recibePage"
 
 
 
+
 describe('Module Online Shope', () => {
     const recibepage = new RecibePage()  
     const registerPage = new RegisterPage() 
@@ -54,10 +55,11 @@ describe('Module Online Shope', () => {
        checkoutPage.escribirlastname(logindata.Lastname)
        checkoutPage.escribircardnumber(logindata.CardNumber)
        checkoutPage.clickPurchase()
-       checkoutPage.Esperar10segundos()
-       recibepage.Ver
-
-
+       recibepage.VerificoNombre().should('include.text','Cristian Torre')
+       recibepage.VerificoProductos(productos.producto1.name).should('include.text','Black Socks')
+       recibepage.VerificoProductos(productos.producto2.name).should('include.text','Beige Shorts')
+       recibepage.VerificoTarjeta().should('include.text','1234567891234567')
+       recibepage.VerificoSuma().should('include.text','29')
        
        
     })    

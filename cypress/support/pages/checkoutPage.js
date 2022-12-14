@@ -19,9 +19,7 @@ export class CheckoutPage {
     clickPurchase() {
         cy.contains(this.name).click()
     }
-        Esperar10segundos(){
-            cy.get( {timeout:10000})
-        }
+        
    }
     
 
