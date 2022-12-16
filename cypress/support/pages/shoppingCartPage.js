@@ -6,9 +6,6 @@ export class ShoppingCartPage {
         this.name='Go to Checkout'
 
     };
-
-    
-
     clickShowTotalPrice() {
         cy.contains(this.ShowTotalPrice).click()
         

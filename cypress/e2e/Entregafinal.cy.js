@@ -4,7 +4,7 @@ import { ProductsPage } from "../support/pages/productsPage";
 import { ShoppingCartPage } from "../support/pages/shoppingCartPage";
 import { CheckoutPage } from "../support/pages/checkoutPage";
 import { RecibePage } from "../support/pages/recibePage"
-describe('Module Online Shope', () => {
+describe('',() => {
     const homePage = new HomePage()
     const recibepage = new RecibePage()
     const productsPage = new ProductsPage()
@@ -21,7 +21,8 @@ describe('Module Online Shope', () => {
             productos = data
         });
     });
-    it('Test PushingitPage', () => {
+    it('Deberia registrarme ,  loguearme, comprar los productos verificar el recibo y eliminar el usuario',
+     () => {
         const username = 'usuariioejjjj'
         const password = '123456!'
         const gender = 'Male'
