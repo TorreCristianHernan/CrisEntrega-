@@ -93,6 +93,7 @@ describe('Deberia registrarme ,  loguearme, comprar los productos verificar el r
         })
     })
 })
+//
 
 
 
