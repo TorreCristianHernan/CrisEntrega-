@@ -4,7 +4,7 @@ import { ProductsPage } from "../support/pages/productsPage";
 import { ShoppingCartPage } from "../support/pages/shoppingCartPage";
 import { CheckoutPage } from "../support/pages/checkoutPage";
 import { RecibePage } from "../support/pages/recibePage"
-describe('',() => {
+describe('Deberia registrarme ,  loguearme, comprar los productos verificar el recibo y eliminar el usuario',() => {
     const homePage = new HomePage()
     const recibepage = new RecibePage()
     const productsPage = new ProductsPage()
@@ -21,7 +21,7 @@ describe('',() => {
             productos = data
         });
     });
-    it('Deberia registrarme ,  loguearme, comprar los productos verificar el recibo y eliminar el usuario',
+    it('Deberia registrarme , loguearme, comprar los productos verificar el recibo y eliminar el usuario',
      () => {
         const username = 'usuariioejjjj'
         const password = '123456!'
