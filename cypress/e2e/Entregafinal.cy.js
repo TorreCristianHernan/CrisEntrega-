@@ -10,20 +10,12 @@ describe('Deberia registrarme ,  loguearme, comprar los productos verificar el r
     const productsPage = new ProductsPage()
     const shoppingCartPage = new ShoppingCartPage()
     const checkoutPage = new CheckoutPage()
+    const numeroRandom = Math.floor(Math.random() * 1000);
+    const usuario = `TorreCristianHernan${numeroRandom}`;
     let logindata
     let productos
     before('Before', () => {
-        cy.fixture('logindata').then(data => {
-            logindata = data
-
-        });
-        cy.fixture('productos').then(data => {
-            productos = data
-        });
-    });
-    it('Deberia registrarme , loguearme, comprar los productos verificar el recibo y eliminar el usuario',
-     () => {
-        const username = 'usuariioejjjj'
+        const username = usuario
         const password = '123456!'
         const gender = 'Male'
         const day = '5'
@@ -34,25 +26,21 @@ describe('Deberia registrarme ,  loguearme, comprar los productos verificar el r
             method: "POST",
             url: "https://pushing-it.onrender.com/api/register",
             body: {
-                username: username,
-                password: password,
-                gender: gender,
-                day: day,
-                month: month,
-                year: year
+                username: usuario,
+                password: '123456!',
+                gender: 'Male',
+                day: '5',
+                month: 'October',
+                year: '1988'
             }
-        }).then(respuesta => {
-            expect(respuesta.status).is.equal(200)
-            expect(respuesta.body.newUser.username).is.equal(username)
-
-        });
-
-        cy.request({
+        })
+        .then(respuesta => {
+          cy.request({
             method: "POST",
             url: "https://pushing-it.onrender.com/api/login",
             body: {
-                username: username,
-                password: password,
+                username: usuario,
+                password: '123456!',
 
             }
 
@@ -61,6 +49,19 @@ describe('Deberia registrarme ,  loguearme, comprar los productos verificar el r
             window.localStorage.setItem('user', respuesta.body.user.username)
 
         })
+    })
+        cy.fixture('logindata').then(data => {
+            logindata = data
+
+        });
+        cy.fixture('productos').then(data => {
+            productos = data
+        });
+    });
+    it('Deberia registrarme , loguearme, comprar los productos verificar el recibo y eliminar el usuario',
+     () => {
+
+     
         cy.visit('')
         homePage.clickOnlineShop()
         productsPage.agregarProducto(productos.producto1.name)
@@ -86,9 +87,9 @@ describe('Deberia registrarme ,  loguearme, comprar los productos verificar el r
     after('elimino usuario', () => {
         cy.request({
             method: "DELETE",
-            url: `https://pushing-it.onrender.com/api/deleteuser/${username}`,
-        }).then(respuesta => {
-            cy.log(respuesta)
+            url: `https://pushing-it.onrender.com/api/deleteuser/TorreCristianHernan${numeroRandom}`,
+        }).then((respuesta) => {
+            expect(respuesta.status).equal(200)
         })
     })
 })
